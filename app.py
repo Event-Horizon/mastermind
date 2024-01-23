@@ -100,7 +100,7 @@ def get_random_item(list: list) -> Any:
 
 
 def run() -> None:
-    debug = True
+    debug = False
 
     word_list = {
         5: ["whizz", "fuzzy", "quick", "quiff", "juked", "puked"],
