@@ -5,12 +5,23 @@ word_list = {
   5: ["whizz", "fuzzy", "quick", "quiff", "juked", "puked"],
   6: ["fizzes", "buzzes", "sizzle", "jumper", "jabber", "quiver"],
   7: ["quizzes", "buzzcut", "schmuck", "quaking", "junkies", "gimmick"],
-  8: ["quantify", "kickball", "squiggle", "scramjet", "jammiest", "backfill"]
+  8: ["delicate", "kickball", "concrete", "blizzard", "consumer", "backfill", "delivery"]
 }
 
-max_guesses = 3
+difficulty_guesscount = {
+    5:3,
+    6:3,
+    7:4,
+    8:4
+}
+
 guesses = 0 # guesses taken
-difficulty = 5 # letters in word
+difficulty = 8 # letters in word
+if difficulty < 5:
+    difficulty=5
+if difficulty > 8:
+    difficulty=8
+max_guesses = difficulty_guesscount[difficulty]
 answer = word_list[difficulty][math.floor(random.random() * len(word_list[difficulty]))]
 game_won = False
 
@@ -40,7 +51,7 @@ def wait_response():
         alike_result = get_alike(response, answer)
 
         guesses+=1
-                
+
         if response == answer:
             game_won=True
             print(f"{alike_result}/{len(answer)}")
