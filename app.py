@@ -1,6 +1,7 @@
 import math
 import random
 from typing import Any, Literal
+import io
 
 
 def clamp(n: int, minn: int, maxn: int) -> int:
@@ -70,7 +71,6 @@ def wait_response(guesses: int, max_guesses: int, answer: str, game_won_state: b
 
         show_guesses_available(guesses, max_guesses)
         print(f"{alike_result}/{len(answer)} Try again!")
-        return
 
 
 def get_guesses_available(guesses: int, max_guesses: int) -> int:
@@ -87,11 +87,13 @@ def show_guesses_available(guesses: int, max_guesses: int) -> None:
 
 
 def show_wordbank(words_difficulty_list: list) -> None:
-    result = "Wordbank: "
+    iostring = io.StringIO()
+    iostring.write("Wordbank: ")
     for key, word in enumerate(words_difficulty_list):
-        result += word
+        iostring.write(word)
         if key < len(words_difficulty_list)-1:
-            result += ","
+            iostring.write(",")
+    result=iostring.getvalue() # convert back to string value
     print(result)
 
 
