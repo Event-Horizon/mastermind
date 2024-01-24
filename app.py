@@ -12,7 +12,7 @@ def clamp(n: int, minn: int, maxn: int) -> int:
         return n
 
 
-def get_key_range(numkey_dict: dict) -> tuple[int, int]:
+def get_key_range(numkey_dict: dict[int, int]) -> tuple[int, int]:
     if not all(isinstance(key, int) for key in numkey_dict.keys()):
         raise Exception("Function get_key_range requires number indexed dictionary only.")
 
@@ -99,7 +99,7 @@ def get_random_item(list: list) -> Any:
     return list[math.floor(random.random() * len(list))]
 
 
-def run() -> None:
+def main() -> None:
     debug = False
 
     word_list = {
@@ -133,4 +133,5 @@ def run() -> None:
     wait_response(guesses, max_guesses, answer, game_won)
 
 
-run()
+if __name__ == "__main__":
+    main()
